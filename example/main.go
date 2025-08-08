@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/itispay/go-client"
+	"github.com/ItIsPay/go-client"
 )
 
 func main() {
