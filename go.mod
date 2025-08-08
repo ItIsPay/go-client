@@ -1,3 +1,3 @@
-module github.com/itispay/go-client
+module github.com/ItIsPay/go-client
 
 go 1.21 
