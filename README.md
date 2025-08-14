@@ -115,7 +115,7 @@ invoices, err := client.ListInvoices(ctx, itispay.ListInvoicesParams{
     SortOrder: itispay.SortOrderDesc,
 })
 
-for _, invoice := range invoices.Data {
+for _, invoice := range invoices.Items {
     fmt.Printf("Invoice %s: %s - %f %s\n", 
         invoice.InvoiceID, 
         invoice.Status, 
@@ -205,6 +205,8 @@ if err != nil {
             fmt.Println("Authentication failed")
         case 404:
             fmt.Println("Invoice not found")
+		case 422:
+            fmt.Println("Validation failed")
         case 400:
             fmt.Printf("Bad request: %s\n", apiErr.Message)
         default:

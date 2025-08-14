@@ -30,15 +30,15 @@ const (
 
 // CreateInvoiceRequest represents the request to create a new invoice
 type CreateInvoiceRequest struct {
-	OrderID            string   `json:"order_id"`
-	FiatAmount         *float64 `json:"fiat_amount,omitempty"`
-	FiatCurrency       string   `json:"fiat_currency,omitempty"`
-	CryptoAmount       *float64 `json:"crypto_amount,omitempty"`
-	Currency           string   `json:"currency"`
-	AllowedErrorPercent *int    `json:"allowed_error_percent,omitempty"`
-	OrderName          string   `json:"order_name,omitempty"`
-	ExpireMin          *int     `json:"expire_min,omitempty"`
-	CallbackURL        string   `json:"callback_url,omitempty"`
+	OrderID             string   `json:"order_id"`
+	FiatAmount          *float64 `json:"fiat_amount,omitempty"`
+	FiatCurrency        string   `json:"fiat_currency,omitempty"`
+	CryptoAmount        *float64 `json:"crypto_amount,omitempty"`
+	Currency            string   `json:"currency"`
+	AllowedErrorPercent *int     `json:"allowed_error_percent,omitempty"`
+	OrderName           string   `json:"order_name,omitempty"`
+	ExpireMin           *int     `json:"expire_min,omitempty"`
+	CallbackURL         string   `json:"callback_url,omitempty"`
 }
 
 // UpdateInvoiceRequest represents the request to update an invoice
@@ -66,36 +66,36 @@ type WebhookSimulateRequest struct {
 
 // Invoice represents an invoice response
 type Invoice struct {
-	InvoiceID                    string            `json:"invoice_id"`
-	UserID                       string            `json:"user_id"`
-	ProjectID                    string            `json:"project_id"`
-	OrderID                      string            `json:"order_id"`
-	FiatAmount                   float64           `json:"fiat_amount"`
-	FiatCurrency                 string            `json:"fiat_currency"`
-	Currency                     string            `json:"currency"`
-	CryptoAmount                 float64           `json:"crypto_amount"`
-	CryptoAmountInUnits          *int64            `json:"crypto_amount_in_units,omitempty"`
-	ActualCryptoAmountPaid       float64           `json:"actual_crypto_amount_paid"`
-	ActualCryptoAmountPaidInUnits int64            `json:"actual_crypto_amount_paid_in_units"`
-	AllowedErrorPercent          int               `json:"allowed_error_percent"`
-	OrderName                    string            `json:"order_name"`
-	ExpireMin                    int               `json:"expire_min"`
-	CallbackURL                  string            `json:"callback_url"`
-	Status                       string            `json:"status"`
-	CreatedAt                    time.Time         `json:"created_at"`
-	UpdatedAt                    time.Time         `json:"updated_at"`
-	ExpiresAt                    time.Time         `json:"expires_at"`
-	BlockchainDetails            *BlockchainDetails `json:"blockchain_details,omitempty"`
+	InvoiceID                     string             `json:"invoice_id"`
+	UserID                        string             `json:"user_id"`
+	ProjectID                     string             `json:"project_id"`
+	OrderID                       string             `json:"order_id"`
+	FiatAmount                    float64            `json:"fiat_amount"`
+	FiatCurrency                  string             `json:"fiat_currency"`
+	Currency                      string             `json:"currency"`
+	CryptoAmount                  float64            `json:"crypto_amount"`
+	CryptoAmountInUnits           *int64             `json:"crypto_amount_in_units,omitempty"`
+	ActualCryptoAmountPaid        float64            `json:"actual_crypto_amount_paid"`
+	ActualCryptoAmountPaidInUnits int64              `json:"actual_crypto_amount_paid_in_units"`
+	AllowedErrorPercent           int                `json:"allowed_error_percent"`
+	OrderName                     string             `json:"order_name"`
+	ExpireMin                     int                `json:"expire_min"`
+	CallbackURL                   string             `json:"callback_url"`
+	Status                        string             `json:"status"`
+	CreatedAt                     time.Time          `json:"created_at"`
+	UpdatedAt                     time.Time          `json:"updated_at"`
+	ExpiresAt                     time.Time          `json:"expires_at"`
+	BlockchainDetails             *BlockchainDetails `json:"blockchain_details,omitempty"`
 }
 
 // BlockchainDetails represents blockchain information for an invoice
 type BlockchainDetails struct {
-	WalletID           string              `json:"walletId"`
-	AccountID          string              `json:"accountId"`
-	Currency           string              `json:"currency"`
-	BlockchainAddress  string              `json:"blockchainAddress"`
-	BlockchainNetwork  *BlockchainNetwork  `json:"blockchainNetwork,omitempty"`
-	QRCode             string              `json:"qrcode,omitempty"`
+	WalletID          string             `json:"walletId"`
+	AccountID         string             `json:"accountId"`
+	Currency          string             `json:"currency"`
+	BlockchainAddress string             `json:"blockchainAddress"`
+	BlockchainNetwork *BlockchainNetwork `json:"blockchainNetwork,omitempty"`
+	QRCode            string             `json:"qrcode,omitempty"`
 }
 
 // BlockchainNetwork represents blockchain network information
@@ -106,7 +106,7 @@ type BlockchainNetwork struct {
 
 // ListInvoicesResponse represents the response from listing invoices
 type ListInvoicesResponse struct {
-	Data       []Invoice      `json:"data"`
+	Items      []Invoice      `json:"items"`
 	Pagination PaginationInfo `json:"pagination"`
 }
 
@@ -122,13 +122,13 @@ type PaginationInfo struct {
 
 // Currency represents a supported currency with detailed information
 type Currency struct {
-	CurrencyCode   string    `json:"currency_code"`
-	IsCrypto       bool      `json:"is_crypto"`
-	Precision      int       `json:"precision"`
-	IsActive       bool      `json:"is_active"`
-	WalletPattern  string    `json:"wallet_pattern,omitempty"`
-	Network        string    `json:"network,omitempty"`
-	CreatedAt      time.Time `json:"created_at"`
+	CurrencyCode  string    `json:"currency_code"`
+	IsCrypto      bool      `json:"is_crypto"`
+	Precision     int       `json:"precision"`
+	IsActive      bool      `json:"is_active"`
+	WalletPattern string    `json:"wallet_pattern,omitempty"`
+	Network       string    `json:"network,omitempty"`
+	CreatedAt     time.Time `json:"created_at"`
 }
 
 // CurrenciesResponse represents the response from getting supported currencies
@@ -166,4 +166,4 @@ func (e *APIError) Error() string {
 		return e.Message
 	}
 	return e.ErrorType
-} 
+}
