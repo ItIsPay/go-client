@@ -13,7 +13,7 @@ A clean, idiomatic Go client for the ItIsPay cryptocurrency payment gateway API.
 ## Installation
 
 ```bash
-go get github.com/itispay/go-client
+go get github.com/ItIsPay/go-client
 ```
 
 ## Quick Start
@@ -26,7 +26,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/itispay/go-client"
+    "github.com/ItIsPay/go-client"
 )
 
 func main() {
@@ -115,7 +115,7 @@ invoices, err := client.ListInvoices(ctx, itispay.ListInvoicesParams{
     SortOrder: itispay.SortOrderDesc,
 })
 
-for _, invoice := range invoices.Data {
+for _, invoice := range invoices.Items {
     fmt.Printf("Invoice %s: %s - %f %s\n", 
         invoice.InvoiceID, 
         invoice.Status, 
@@ -205,6 +205,8 @@ if err != nil {
             fmt.Println("Authentication failed")
         case 404:
             fmt.Println("Invoice not found")
+		case 422:
+            fmt.Println("Validation failed")
         case 400:
             fmt.Printf("Bad request: %s\n", apiErr.Message)
         default:
@@ -275,7 +277,7 @@ import (
     "log"
     "time"
 
-    "github.com/itispay/go-client"
+    "github.com/ItIsPay/go-client"
 )
 
 func main() {
@@ -351,7 +353,7 @@ The workspace automatically handles the module dependencies, so you don't need t
 ### Production Usage
 
 ```bash
-go get github.com/itispay/go-client
+go get github.com/ItIsPay/go-client
 ```
 
 ## License

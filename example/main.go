@@ -104,11 +104,11 @@ func main() {
 		log.Printf("Failed to list invoices: %v", err)
 	} else {
 		fmt.Printf("✅ Found %d invoices (Page %d of %d)\n",
-			len(invoices.Data),
+			len(invoices.Items),
 			invoices.Pagination.CurrentPage,
 			invoices.Pagination.TotalPages,
 		)
-		for i, inv := range invoices.Data {
+		for i, inv := range invoices.Items {
 			fmt.Printf("   %d. %s - €%.2f %s (%s)\n",
 				i+1,
 				inv.OrderID,
