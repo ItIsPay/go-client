@@ -36,14 +36,14 @@ func main() {
     // Create an invoice
     ctx := context.Background()
     fiatAmount := 100.0
-    
+    expireMin := 30
     invoice, err := client.CreateInvoice(ctx, itispay.CreateInvoiceRequest{
         OrderID:      "ORDER-12345",
         FiatAmount:   &fiatAmount,
         FiatCurrency: "EUR",
         Currency:     "BTC",
         OrderName:    "Premium Subscription",
-        ExpireMin:    &[]int{30}[0],
+        ExpireMin:    &expireMin,
         CallbackURL:  "https://your-app.com/webhook",
     })
     if err != nil {
